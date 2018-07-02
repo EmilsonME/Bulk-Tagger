@@ -1,0 +1,80 @@
+*{
+	font-family: 'Montserrat', sans-serif;
+}
+
+.heading{
+	margin: 3% 0;
+}
+.small-wrapper{
+	overflow-y: scroll;
+	height: 450px;
+	border: 1px solid #b9a6;
+	padding: 10px;
+}
+#selectAll{
+	margin-left: 1.5rem;
+}
+.main-label{
+
+}
+.main-label:hover{
+	cursor: pointer;
+	border-color: springgreen;
+}
+
+.highlight{
+	outline:3px solid springgreen !important;
+	outline-offset: -3px;
+	border-color: transparent;
+}
+.staff-list{
+	padding-left: 0;
+}
+.staff-list li{
+	list-style-type: none;
+}
+.fullname{
+	font-weight: bold;
+	font-size: 1.32rem;
+	margin-left: .5rem;
+}
+.tag-wrapper{
+	margin-left: 1.5rem;
+}
+.tag{
+	font-size: .78rem;
+	border: 1px solid ;
+	border-radius: 30px;
+	vertical-align: middle;
+	line-height: 22px;
+	padding: 0 14px;
+	display: inline-block;
+	margin: 3px 3px 3px 3px;
+}
+.award-tag{
+	border-color: crimson;
+}
+.team-tag{
+	border-color: rgba(50,159,206);
+}
+.small-wrapper .no-results{
+	text-align: center;
+	margin:  0 auto;
+}
+.oops{
+	font-weight: bold;
+	font-size: 10rem;
+	color: grey;
+}
+.labels{
+	margin-right: .75rem !important;
+}
+.labels2{
+	margin-top: .60rem;
+	margin-bottom: .30rem !important;
+}
+
+.add-tag select{
+	margin-right: 1.5rem;
+	width: 24.3% !important;
+}

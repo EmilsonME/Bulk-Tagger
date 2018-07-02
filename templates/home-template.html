@@ -1,0 +1,87 @@
+
+<div class="row" >
+	<div class="col-md-8">
+		<form ng-submit="categorise.addTag()" name="myForm">
+			<input ng-show="employees.length" type="checkbox" ng-click="categorise.toggleAll()"  id="selectAll" /> <label ng-show="employees.length" for="#selectAll" >Select All</label><br />
+			<div class="form-group small-wrapper">
+				<ul class="staff-list">
+					<li ng-repeat="staff in employees = (categorise.staffs | filter: categorise.fullname | filter: categorise.selectedTeam | filter: categorise.selectedAward)">
+						<label  for="staff{{$index}}" ng-class="{'highlight': categorise.checkBox[$index].value === true}" class="form-control main-label" > 
+							<input ng-model="categorise.checkBox[$index].value" ng-change="categorise.isChecked($index)" type="checkbox" name="checkbox"  id="staff{{$index}}" class="chkbx">
+							<span class="fullname"> {{staff.fullname}}</span><br>  
+							<div class="tag-wrapper">
+								<span class="label-tag"><em>Tags: </em></span>
+								<span ng-repeat="tag in staff.team_tags track by $index" class="tag team-tag">{{tag}}</span>
+								<span ng-repeat="tag in staff.award_tags track by $index" class="tag award-tag">{{tag}}</span>
+							</div>
+						</label> 
+					</li>	
+				</ul>
+				<p ng-hide="employees.length" class="no-results"><span class="oops">\(o_o)/</span> <br> No Results Found!</p>
+			</div>
+			<div ng-show="employees.length" class="row add-tag">
+				<div class="col">
+					<h4>ADD TAGS TO THEM!</h4>
+					<div class="form-group form-inline">
+						<label for="selectTeam1" class="form-label labels">TEAMS</label>
+						<select ng-model="categorise.new.team_tags" ng-options="team for team in categorise.teamList.teams" ng-required="categorise.new.award_tags === undefined" name="team_tags" class="form-control form-control-sm" id="selectedTeam1"> </select>
+						
+						<label for="selectTeam1" class="form-label labels">AWARD TAGS</label>
+						<select ng-model="categorise.new.award_tags" ng-options="awardTag for awardTag in categorise.awardTags.award_tags" ng-required="categorise.new.team_tags === undefined" name="award_tags" class="form-control form-control-sm" id="selectAwardTag1"></select>
+						
+						<button type="submit" name="submit" ng-disabled="myForm.award_tags.$invalid || myForm.team_tags.$invalid || myForm.checkbox.$invalid || !categorise.atLeastOne" class="btn btn-dark" data-toggle="modal" data-target="#myModal">ADD TAG</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group ">
+			<h4>FIND SOMEONE</h4>
+			<input type="search" name="search" ng-model="categorise.fullname" class="form-control" placeholder="Search">
+			
+			<label for="selectTeam" class="form-label labels2" >TEAMS</label>
+			<select ng-model="categorise.selectedTeam"  ng-options="team for team in categorise.teamList.teams" class="form-control" id="selectTeam">
+			</select>
+
+			<label for="selectTeam" class="form-label labels2" >AWARD TAGS</label>
+			<select ng-model="categorise.selectedAward" ng-options="awardTag for awardTag in categorise.awardTags.award_tags" class="form-control " id="selectAwardTag">
+			</select>
+
+			<button ng-click="categorise.fullname = undefined; categorise.selectedTeam=undefined; categorise.selectedAward=undefined" class="btn btn-secondary form-control mt-3">REMOVE FILTERS</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Summary</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+     
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>You added tags to the following: </p>
+        <ul>
+        	<li ng-repeat="index in categorise.checkBox | filter: value=true"> 
+        		<label><strong>Name: </strong></label><span>  {{categorise.staffs[index.x].fullname}}</span><br>
+        		<label><strong>Team: </strong></label><span>  {{categorise.new.team_tags}}</span><br>
+        		<label><strong>Award Tag: </strong></label><span>  {{categorise.new.award_tags}}</span>
+        	</li>
+        </ul>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="categorise.reset()" >Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

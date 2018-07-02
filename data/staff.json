@@ -1,0 +1,40 @@
+[
+   {
+      "fullname":"Emilson B. Olaño",
+      "team_tags":["kitchen", "Bar"],
+      "award_tags":["Full Time", "Level 1"]
+      
+   },
+   {
+      "fullname":"Angel O. Locsin",
+      "team_tags":["Bistro", "Pokies"],
+      "award_tags":["Casual", "Level 3"]
+      
+   },
+   {
+      "fullname":"Bea A. Alonzo",
+      "team_tags":["Bar", "Bar"],
+      "award_tags":["Salaried", "Level 2"]
+      
+   },
+   {
+      "fullname":"Jane N. Doe",
+      "team_tags":["kitchen", "Uncategorized Shift"],
+      "award_tags":["Apprentice", "Level 4"]
+      
+   },
+   {
+      "fullname":"John G. Doe",
+      "team_tags":["kitchen", "Gaming"],
+      "award_tags":["Part Time", "Level 6"]
+      
+   },
+   {
+      "fullname":"James M. Eleven",
+      "team_tags":["kitchen", "Bar"],
+      "award_tags":["Part Time", "Level 2"]
+      
+   }
+
+   
+]
